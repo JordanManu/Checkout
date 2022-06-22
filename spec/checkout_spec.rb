@@ -16,4 +16,16 @@ describe Checkout do
       expect(Checkout::ITEMS.count).to eq 3
     end
   end
+  context "Scan" do 
+    let (:june_promotion) { 10 }
+    let (:co) { Checkout.new(june_promotion) }
+
+    it 'adds multiple items to the basket' do 
+      co.scan("Lavender heart")
+      co.scan("Personalised cufflinks")
+      expect(co.basket).to eq ["Lavender heart", "Personalised cufflinks"]
+    end
+  end
+
+  # context "Discount"
 end

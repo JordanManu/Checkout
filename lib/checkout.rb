@@ -1,4 +1,6 @@
 class Checkout 
+
+  attr_reader :basket
  
   ITEMS = {
     "Lavender heart" => 9.25, 
@@ -7,5 +9,10 @@ class Checkout
   }
 
   def initialize(promotional_rules)
+    @basket = []
+  end
+  
+  def scan(item)
+    @basket.push(item)
   end
 end
