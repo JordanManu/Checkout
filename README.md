@@ -30,16 +30,14 @@ TO DO
 * To run the tests using Rspec, you can run the command ```rspec``` in your terminal
 * To check the quality of the code, use the command ```rubocop``` to run rubocop
 * To use the program, start by opening irb in your terminal
-* To load the program into irb use the command ```load './lib/checkout' ```
-
-
+* To load the program into irb use the command ```load './lib/checkout.rb' ```
+* Start by creating an instance of the Checkout class with ```co = Checkout.new```
+* To scan an item (add items to the basket), use ```co.scan(item)```
+* To see the total amount of the items, use ```co.total```
+* To remove an item from the basket, use ```co.remove_item(item)```
 
 ## My approach
 
-
-## User Stories
-
-
-
-## References
-
+- My approach to this challenge was to first start with a TDD approach to create simple and effective code.
+- I started by having one Checkout class, then after I got that completed and working, I separated it into two classes - Checkout and Promotion. I did this so that the promotions would be easier to change and update, without affecting the Checkout class.
+The Checkout class is responsible for handling the items, and the Promotion class is responsible for calculating the discount.
