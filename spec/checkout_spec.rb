@@ -3,7 +3,7 @@
 require 'checkout'
 
 describe Checkout do
-  
+
   context 'Items' do
     let(:june_promotion) { 10 }
     let(:co) { Checkout.new(june_promotion) }
@@ -42,5 +42,30 @@ describe Checkout do
     end
   end
 
-  # context "Discount"
+  context "Discount" do 
+    let(:june_promotion) { 10 }
+    let(:co) { Checkout.new(june_promotion) }
+
+    it 'adds a discount of 10% off if the total is over £60' do
+      co.scan('Personalised cufflinks')
+      co.scan('Personalised cufflinks')
+      expect(co.total).to eq '£81.00'
+    end
+
+    it 'reduces the price of lavender hearts to 8.50 if 2 or more are added' do
+      co.scan('Lavender heart')
+      co.scan('Kids T-shirt')
+      co.scan('Lavender heart')
+      expect(co.total).to eq '£36.95'
+    end
+    it 'adds multiple discounts to the total' do
+      co.scan('Lavender heart')
+      co.scan('Personalised cufflinks')
+      co.scan('Lavender heart')
+      co.scan('Kids T-shirt')
+      expect(co.total).to eq '£73.60'
+    end
+  end
+
+  
 end
