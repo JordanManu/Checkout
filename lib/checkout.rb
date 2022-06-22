@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'byebug'
+
+require_relative 'promotion'
 
 class Checkout
   attr_reader :basket
@@ -10,8 +11,8 @@ class Checkout
     'Kids T-shirt' => 19.95
   }.freeze
 
-  def initialize(current_promotion)
-    @current_promotion = current_promotion
+  def initialize(promotion = Promotion.new)
+    @promotion = promotion
     @basket = []
   end
 
@@ -26,40 +27,15 @@ class Checkout
   end
 
   def total
+    @basket = basket
     order_total = @basket.map { |value| ITEMS.fetch(value) }
-    current_total = apply_discount(order_total.sum)
-    return '£' + format_currency(current_total)
+    current_total = @promotion.june_promotion(basket, order_total.sum)
+    "£#{format_currency(current_total)}"
   end
 
-  def apply_discount(price)
-    price -= percentage_discount(price)
-    if @basket.include?('Lavender heart')
-      price -= lavender_hearts_discount
-    end
-    return price
-  end
+  private
 
-  private 
-
-  def percentage_discount(price)
-    if price > 60
-      price * @current_promotion / 100
-    else
-      0
-    end
-  end
-
-  def lavender_hearts_discount
-    basket_amount = @basket.tally 
-    if basket_amount['Lavender heart'] >= 2
-      basket_amount.fetch('Lavender heart') * 0.75
-    else
-      0
-    end
-  end
- 
   def format_currency(value)
     format('%.2f', value)
   end
-
 end
