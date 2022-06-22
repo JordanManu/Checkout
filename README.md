@@ -1,6 +1,6 @@
-## Checkout 
+# Checkout 
 
-# Specification
+## Specification
 
 * Requirements
   * [X] You should be able to interact with your code via a REPL like IRB or Node. 
