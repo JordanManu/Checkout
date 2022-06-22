@@ -25,12 +25,13 @@ TO DO
 
 ## How to use
 
-* Clone this repo to your local machine with ```git clone https://github.com/JordanManu/bank-tech-test.git```
+* Clone this repo to your local machine with ```git clone https://github.com/JordanManu/Checkout```
 * Run ```bundle install``` to install gems
 * To run the tests using Rspec, you can run the command ```rspec``` in your terminal
 * To check the quality of the code, use the command ```rubocop``` to run rubocop
 * To use the program, start by opening irb in your terminal
-* To load the program into irb use the command ```load './lib/checkout'
+* To load the program into irb use the command ```load './lib/checkout' ```
+
 
 
 ## My approach
