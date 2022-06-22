@@ -1,8 +1,9 @@
 class Checkout 
-  def initialize(promotional_rules)
-  end
+ 
+  ITEMS = {
+    "Lavender heart" => 9.25
+  }
 
-  def items
-    "Lavender heart"
+  def initialize(promotional_rules)
   end
 end
