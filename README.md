@@ -8,7 +8,7 @@
   * [X] Discount given if two or more Lavender hearts are ordered
 
 ## Test data
-
+```
 Basket: Lavender heart, Personalised cufflinks, Kids T-Shirt
 Total price expected: £66.78
 
@@ -17,7 +17,7 @@ Total price expected: £36.95
 
 Basket: Lavender heart, Personalised cufflinks, Lavender heart, Kids T-Shirt, 
 Total price expected: £73.60
-
+```
 
 ## Screenshots of the program
 
