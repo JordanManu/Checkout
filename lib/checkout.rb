@@ -11,7 +11,7 @@ class Checkout
     'Kids T-shirt' => 19.95
   }.freeze
 
-  def initialize(promotion)
+  def initialize(promotion = nil)
     @promotion = promotion
     @basket = []
   end

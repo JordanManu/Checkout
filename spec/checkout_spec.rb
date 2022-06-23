@@ -58,7 +58,7 @@ describe Checkout do
 
   context 'No promotion' do
     it 'returns the total if no promotion is given' do
-      co = Checkout.new('No promotion')
+      co = Checkout.new
       co.scan('Lavender heart')
       co.scan('Kids T-shirt')
       co.scan('Lavender heart')
