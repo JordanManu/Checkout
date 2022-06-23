@@ -21,7 +21,7 @@ Total price expected: £73.76
 
 ## Screenshots of the program
 
-![Screenshot](https://imgur.com/Foc1CZk.png)
+![Screenshot](https://imgur.com/TZav8Kp.png)
 
 ## How to use
 
