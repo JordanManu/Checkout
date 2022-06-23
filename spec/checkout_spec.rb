@@ -67,14 +67,15 @@ describe Checkout do
   end
 
   context 'Promotion' do
-  it 'receives apply when total is called' do
-    promotion = double('promotion')
-    co = Checkout.new(promotion)
-    allow(promotion).to receive(:apply).and_return 9.25
-    allow(promotion).to receive(:instance_of?).with(Promotion).and_return(true)
+    it 'receives apply when total is called' do
+      promotion = double('promotion')
+      co = Checkout.new(promotion)
+      allow(promotion).to receive(:apply).and_return 9.25
+      allow(promotion).to receive(:instance_of?).with(Promotion).and_return(true)
 
-    co.scan('Lavender heart')
-    co.total
-    expect(promotion).to have_received(:apply)
+      co.scan('Lavender heart')
+      co.total
+      expect(promotion).to have_received(:apply)
+    end
   end
 end
