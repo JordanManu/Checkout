@@ -21,13 +21,13 @@ Total price expected: £73.76
 
 ## Screenshots of the program
 
-TO DO
+![Screenshot](https://imgur.com/Foc1CZk.png)
 
 ## How to use
 
 * Clone this repo to your local machine with ```git clone https://github.com/JordanManu/Checkout```
 * Run ```bundle install``` to install gems
-* To run the tests using Rspec, you can run the command ```rspec``` in your terminal
+* To run the tests using Rspec, and to check the test coverage, you can run the command ```rspec``` in your terminal
 * To check the quality of the code, use the command ```rubocop``` to run rubocop
 * To use the program, start by opening irb in your terminal
 * To load the program into irb use the command ```load './lib/checkout.rb' ```
