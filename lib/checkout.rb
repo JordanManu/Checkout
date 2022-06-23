@@ -3,7 +3,7 @@
 require_relative 'promotion'
 
 class Checkout
-  attr_reader :basket
+  attr_reader :basket, :promotion
 
   ITEMS = {
     'Lavender heart' => 9.25,
@@ -11,7 +11,7 @@ class Checkout
     'Kids T-shirt' => 19.95
   }.freeze
 
-  def initialize(promotion = Promotion.new)
+  def initialize(promotion)
     @promotion = promotion
     @basket = []
   end
@@ -19,17 +19,26 @@ class Checkout
   def scan(item)
     raise 'That item is not available' unless ITEMS.key?(item)
 
-    @basket.push(item)
+    basket.push(item)
   end
 
   def remove_item(item)
-    @basket.delete(item)
+    delete_item = [item]
+    delete_item.each do |del|
+      basket.delete_at(basket.index(del))
+    end
   end
 
   def total
-    @basket = basket
-    order_total = @basket.map { |value| ITEMS.fetch(value) }
-    current_total = @promotion.june_promotion(basket, order_total.sum)
+    order_total = basket.map { |value| ITEMS.fetch(value) }
+    raise 'Your basket is empty' if order_total.sum.zero?
+
+    current_total = if promotion.instance_of?(Promotion)
+                      promotion.apply(basket,
+                                      order_total.sum)
+                    else
+                      order_total.sum
+                    end
     "£#{format_currency(current_total)}"
   end
 

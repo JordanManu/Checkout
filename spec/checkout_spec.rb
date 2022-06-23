@@ -5,7 +5,8 @@ require 'promotion'
 
 describe Checkout do
   context 'Items' do
-    let(:co) { Checkout.new }
+    let(:promotion) { double('promotion') }
+    let(:co) { Checkout.new(promotion) }
 
     it 'is initialized with an item' do
       expect(Checkout::ITEMS.first).to eq ['Lavender heart', 9.25]
@@ -20,7 +21,8 @@ describe Checkout do
   end
 
   context 'Scan items' do
-    let(:co) { Checkout.new }
+    let(:promotion) { double('promotion') }
+    let(:co) { Checkout.new(promotion) }
 
     it 'adds multiple items to the basket' do
       co.scan('Lavender heart')
@@ -43,13 +45,36 @@ describe Checkout do
   context 'Total' do
     it 'returns the correct total' do
       promotion = double('promotion')
-      allow(promotion).to receive(:june_promotion).and_return 36.95
       co = Checkout.new(promotion)
+      allow(promotion).to receive(:apply).and_return 36.95
+      allow(promotion).to receive(:instance_of?).with(Promotion).and_return(true)
 
       co.scan('Lavender heart')
       co.scan('Kids T-shirt')
       co.scan('Lavender heart')
       expect(co.total).to eq '£36.95'
     end
+  end
+
+  context 'No promotion' do
+    it 'returns the total if no promotion is given' do
+      co = Checkout.new('No promotion')
+      co.scan('Lavender heart')
+      co.scan('Kids T-shirt')
+      co.scan('Lavender heart')
+      expect(co.total).to eq '£38.45'
+    end
+  end
+
+  context 'Promotion'
+  it 'receives apply when total is called' do
+    promotion = double('promotion')
+    co = Checkout.new(promotion)
+    allow(promotion).to receive(:apply).and_return 9.25
+    allow(promotion).to receive(:instance_of?).with(Promotion).and_return(true)
+
+    co.scan('Lavender heart')
+    co.total
+    expect(promotion).to have_received(:apply)
   end
 end

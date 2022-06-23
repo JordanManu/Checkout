@@ -3,7 +3,7 @@
 ## Specification
 
 * Requirements
-  * [X] You should be able to interact with your code via a REPL like IRB or Node. 
+  * [X] You should be able to interact with your code via a REPL like IRB
   * [X] Discount of 10% given if total is over £60
   * [X] Discount given if two or more Lavender hearts are ordered
 
@@ -16,7 +16,7 @@ Basket: Lavender heart, Kids T-Shirt, Lavender heart
 Total price expected: £36.95
 
 Basket: Lavender heart, Personalised cufflinks, Lavender heart, Kids T-Shirt, 
-Total price expected: £73.60
+Total price expected: £73.76
 ```
 
 ## Screenshots of the program
@@ -31,7 +31,8 @@ TO DO
 * To check the quality of the code, use the command ```rubocop``` to run rubocop
 * To use the program, start by opening irb in your terminal
 * To load the program into irb use the command ```load './lib/checkout.rb' ```
-* Start by creating an instance of the Checkout class with ```co = Checkout.new```
+* Start by creating an instance of the Promotion class with ```promotion = Promotion.new```
+* Then creating an instance of the Checkout class with ```co = Checkout.new(promotion)```
 * To scan an item (add items to the basket), use ```co.scan(item)```
 * To see the total amount of the items, use ```co.total```
 * To remove an item from the basket, use ```co.remove_item(item)```

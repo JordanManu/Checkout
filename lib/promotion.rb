@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Promotion
-  def june_promotion(basket, price)
-    price -= percentage_discount(price)
+  def apply(basket, price)
     price -= lavender_hearts_discount(basket) if basket.include?('Lavender heart')
-    price
+    price -= percentage_discount(price)
+    price.round(2)
   end
 
   private
