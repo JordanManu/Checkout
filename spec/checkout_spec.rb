@@ -66,7 +66,7 @@ describe Checkout do
     end
   end
 
-  context 'Promotion'
+  context 'Promotion' do
   it 'receives apply when total is called' do
     promotion = double('promotion')
     co = Checkout.new(promotion)
